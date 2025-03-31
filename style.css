@@ -210,3 +210,21 @@ footer {
   text-shadow: 0 0 6px #00eaff;
   border-radius: 10px;
 }
+
+/* TOP BUTTON */
+.top-button {
+  position: fixed;
+  top: 120px;
+  right: 20px;
+  z-index: 10;
+}
+
+.button {
+  background-color: black;
+  color: black;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 16px;
+}
