@@ -11,13 +11,6 @@ const questionsAndAnswers = {
 let popupVisible = false; // Track if the popup is open
 let musicPlaying = false; // Track if the music is currently playing
 
-// Allow music to play after first user interaction (bypass autoplay restrictions)
-document.body.addEventListener("click", () => {
-  const music = document.getElementById('bg-music');
-  music.muted = false;
-  music.play().catch(err => console.log("Autoplay blocked:", err));
-}, { once: true }); // Runs only once
-
 // Function to start playing music and display popup on mouseover
 function playMusic(id) {
   if (popupVisible) return; // Prevent changing the question if the popup is already open
