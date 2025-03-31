@@ -184,7 +184,7 @@ footer {
 /* STYLING FOR CK MESSAGE PAGE */
 .farewell-container {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   margin: 50px;
   gap: 40px;
