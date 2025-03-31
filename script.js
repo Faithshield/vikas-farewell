@@ -1,11 +1,11 @@
 // Define questions, answers, and corresponding pages for each image
 const questionsAndAnswers = {
-  1: { question: "What is the ML model we discovered while doing PRP?", answer: "isolation forest", page: "CkMessage.html" },
-  2: { question: "What does WJM wanna be?", answer: "ps", page: "JinMinMessage.html" },
-  3: { question: "What is the name of Shelley’s cat?", answer: "lulu", page: "ShelleyMessage.html" },
-  4: { question: "What's the one thing Cindy tease you about the most?", answer: "alc", page: "CindyMessage.html" },
-  5: { question: "What is Joey's favourite colour?", answer: "lilac", page: "JoeyMessage.html" },
-  6: { question: "What's the first nickname you gave Kimberly?", answer: "kimbers", page: "KimberlyMessage.html" }
+  1: { question: "What is the ML model we discovered while doing PRP?", answer: "isolation forest", page: "QAZMessage.html" },
+  2: { question: "What does WJM wanna be?", answer: "ps", page: "MessageWSX.html" },
+  3: { question: "What is the name of Shelley’s cat?", answer: "lulu", page: "RFVMessage.html" },
+  4: { question: "What's the one thing Cindy tease you about the most?", answer: "alc", page: "MessageNHY.html" },
+  5: { question: "What is Joey's favourite colour?", answer: "lilac", page: "MessageIJN.html" },
+  6: { question: "What's the first nickname you gave Kimberly?", answer: "kimbers", page: "MessageBVC.html" }
 };
 
 let popupVisible = false; // Track if the popup is open
