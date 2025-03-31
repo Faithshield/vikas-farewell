@@ -8,21 +8,34 @@ const questionsAndAnswers = {
   6: { question: "What's the first nickname you gave Kimberly?", answer: "kimbers", page: "KimberlyMessage.html" }
 };
 
-// Function to start playing music on mouseover
-function playMusic(id) {
-  const music = document.getElementById('bg-music');
-  
-  // Start playing the music and unmute
-  if (music.paused) {
-    music.play(); // Play the audio
-    music.muted = false; // Unmute the audio when it starts
-  }
+let popupVisible = false; // Track if the popup is open
+let musicPlaying = false; // Track if the music is currently playing
 
-  // Get the question associated with this image and display it in the popup
+// Allow music to play after first user interaction (bypass autoplay restrictions)
+document.body.addEventListener("click", () => {
+  const music = document.getElementById('bg-music');
+  music.muted = false;
+  music.play().catch(err => console.log("Autoplay blocked:", err));
+}, { once: true }); // Runs only once
+
+// Function to start playing music and display popup on mouseover
+function playMusic(id) {
+  if (popupVisible) return; // Prevent changing the question if the popup is already open
+
+  const music = document.getElementById('bg-music');
+
+  // Reset and play music
+  music.currentTime = 0;
+  music.muted = false;
+  music.play().then(() => {
+    musicPlaying = true; // Track that music is playing
+  }).catch(error => console.log("Autoplay prevented:", error));
+
+  // Display the popup with the correct question
   const questionElement = document.getElementById('popup-question');
   questionElement.textContent = questionsAndAnswers[id].question;
 
-  // Store the answer and page associated with this image
+  // Store the correct answer and the corresponding redirect page
   const popup = document.getElementById('popup');
   popup.setAttribute('data-answer', questionsAndAnswers[id].answer);
   popup.setAttribute('data-page', questionsAndAnswers[id].page);
@@ -31,32 +44,37 @@ function playMusic(id) {
 // Function to stop the music on mouseleave
 function stopMusic() {
   const music = document.getElementById('bg-music');
-  music.pause();           // Pause the music
-  music.currentTime = 0;   // Reset the audio to the start
+
+  if (!popupVisible && musicPlaying) { // Only stop if no popup is visible and music is actually playing
+    music.pause();
+    music.currentTime = 0; // Reset audio
+    musicPlaying = false; // Track that music is stopped
+  }
 }
 
 // Trigger the popup when the music ends
 document.getElementById('bg-music').addEventListener('ended', function() {
   const popup = document.getElementById('popup');
   popup.style.display = 'block'; // Show the popup when music ends
+  popupVisible = true; // Set popup flag
 });
 
 // Function to handle form submission
 function submitAnswer() {
-  const answer = document.getElementById('answer').value.trim().toLowerCase(); // Get answer and make it lowercase
-  const popup = document.getElementById('popup');
-  const correctAnswer = popup.getAttribute('data-answer'); // Get the correct answer
-  const targetPage = popup.getAttribute('data-page'); // Get the corresponding page
+  const answer = document.getElementById('answer').value.trim().toLowerCase();
+  const correctAnswer = document.getElementById('popup').getAttribute('data-answer');
+  const redirectPage = document.getElementById('popup').getAttribute('data-page');
 
-  // Debugging output to the console
   console.log("User's answer:", answer);
   console.log("Correct answer:", correctAnswer);
 
-  // Compare the user's answer with the correct answer
+  // Close popup regardless of correctness
+  document.getElementById('popup').style.display = 'none';
+  popupVisible = false; // Reset popup visibility flag
+
   if (answer === correctAnswer) {
-    // Redirect to the corresponding farewell message page
-    window.location.href = targetPage;
+    window.location.href = redirectPage; // Redirect to the correct farewell message page
   } else {
-    alert("Incorrect answer. Please try again."); // Alert if the answer is incorrect
+    alert("Incorrect answer. Please try again.");
   }
 }
