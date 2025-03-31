@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Farewell Vikas</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <!-- BACKGROUND MUSIC -->
+  <audio id="bg-music" muted>
+    <source src="audio/Cat.mpeg" type="audio/mpeg">
+    Your browser does not support the audio tag.
+  </audio>
+
+  <header>
+    <h1>Farewell Vikas</h1>
+  </header>
+
+  <main>
+    <div class="photo-container">
+      <!-- Left Side People -->
+      <div class="side left-side">
+        <div class="person">
+          <img src="images/Ck.jpeg" alt="Ck" class="side-photo shake" 
+               onmouseover="playMusic(1)" onmouseleave="stopMusic()" 
+               data-question="What press did you teach CK at the gym?" 
+               data-answer="chest">
+          <p class="name-tag">Ck</p>
+        </div>
+        <div class="person">
+          <img src="images/Jin Min.jpeg" alt="Jin Min" class="side-photo shake" 
+               onmouseover="playMusic(2)" onmouseleave="stopMusic()" 
+               data-question="What does WJM wanna be?" 
+               data-answer="ps">
+          <p class="name-tag">Jin Min</p>
+        </div>
+        <div class="person">
+          <img src="images/Shelley.jpeg" alt="Shelley" class="side-photo shake" 
+               onmouseover="playMusic(3)" onmouseleave="stopMusic()" 
+               data-question="What is the name of Shelley’s cat?" 
+               data-answer="lulu">
+          <p class="name-tag">Shelley</p>
+        </div>
+      </div>
+
+      <!-- Center Image (Person Leaving) -->
+      <div class="main-photo-container">
+        <img src="images/Vikas2.jpeg" alt="Vikas" class="main-photo">
+        <p class="name-tag main-name">Vikas</p>
+      </div>
+
+      <!-- Right Side People -->
+      <div class="side right-side">
+        <div class="person">
+          <img src="images/Cynthia.jpeg" alt="Cynthia" class="side-photo shake" 
+               onmouseover="playMusic(4)" onmouseleave="stopMusic()" 
+               data-question="What's the one thing Cindy tease you about the most?" 
+               data-answer="alc">
+          <p class="name-tag">Cynthia</p>
+        </div>
+        <div class="person">
+          <img src="images/Joey.jpeg" alt="Joey" class="side-photo shake" 
+               onmouseover="playMusic(5)" onmouseleave="stopMusic()" 
+               data-question="What is Joey's favourite colour?" 
+               data-answer="lilac">
+          <p class="name-tag">Joey</p>
+        </div>
+        <div class="person">
+          <img src="images/Kimberly.jpeg" alt="Kimberly" class="side-photo shake" 
+               onmouseover="playMusic(6)" onmouseleave="stopMusic()" 
+               data-question="What's the first nickname you gave Kimberly?" 
+               data-answer="kimbers">
+          <p class="name-tag">Kimberly</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Popup -->
+  <div class="popup" id="popup" style="display: none;">
+    <div class="popup-content">
+      <h2 id="popup-question"></h2>
+      <input type="text" id="answer" />
+      <button onclick="submitAnswer()">Submit Answer</button>
+    </div>
+  </div>
+
+  <footer>
+    <p>Take Care! Goodbye!</p>
+  </footer>
+
+</body>
+</html>
