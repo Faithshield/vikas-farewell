@@ -1,6 +1,6 @@
 // Define questions, answers, and corresponding pages for each image
 const questionsAndAnswers = {
-  1: { question: "What press did you teach CK at the gym?", answer: "chest", page: "CkMessage.html" },
+  1: { question: "What is the ML model we discovered while doing PRP?", answer: "isolation forest", page: "CkMessage.html" },
   2: { question: "What does WJM wanna be?", answer: "ps", page: "JinMinMessage.html" },
   3: { question: "What is the name of Shelley’s cat?", answer: "lulu", page: "ShelleyMessage.html" },
   4: { question: "What's the one thing Cindy tease you about the most?", answer: "alc", page: "CindyMessage.html" },
